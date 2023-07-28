@@ -47,13 +47,13 @@ class Musician {
   get name() {
     // гетер для приватного поля #name
     // повертає значення приватного поля #name
-    return `$this.#name`;
+    return this.#name;
   }
 
   get instrument() {
     // гетер для приватного поля #instrument
     // повертає значення приватного поля #instrument
-    return `$this.#instrument`;
+    return this.#instrument;
   }
 
   set name(newName) {
@@ -223,6 +223,7 @@ Object.defineProperty(
     },
   }
 );
+
 /*
  * Клас: Band
  * ---------------------------
@@ -246,11 +247,11 @@ class Band {
   }
   // Створюємо getter для #name, що повертає приватну властивість #name
   get name() {
-    return `$this.#name`;
+    return this.#name;
   }
   // Створюємо getter для #members, що повертає приватну властивість #members
   get members() {
-    return `$this.#members`;
+    return this.#members;
   }
   // Створюємо сетер для #name
   set(newName) {
@@ -297,15 +298,15 @@ class Performance {
   }
   // Створюємо getter для #band, що повертає приватну властивість #band
   get band() {
-    return `$this.#band`;
+    return this.#band;
   }
   // Створюємо getter для #location, що повертає приватну властивість #location
   get location() {
-    return `$this.#location`;
+    return this.#location;
   }
   // Створюємо getter для #date, що повертає приватну властивість #date
   get date() {
-    return `$this.#date`;
+    return this.#date;
   }
   // Визначаємо метод info(), що виводить рядок в консоль `Гурт ${this.#band.name} виступить в ${this.#location} ${this.#date.toLocaleDateString()}`
   info = () => {
@@ -338,7 +339,7 @@ class Concert extends Performance {
   }
   // Створюємо getter для #ticketPrice, що повертає приватну властивість #ticketPrice
   get ticketPrice() {
-    return `$this.#ticketPrice`;
+    return this.#ticketPrice;
   }
   // Створюємо setter для #ticketPrice, що дозволяє змінити приватну властивість #ticketPrice
   set(ticketPrice) {
@@ -373,11 +374,11 @@ class Vocalist {
   }
   // Створюємо getter для #name, що повертає приватну властивість #name
   get name() {
-    return `$this.#name`;
+    return this.#name;
   }
   // Створюємо getter для #band, що повертає приватну властивість #band
   get band() {
-    return `$this.#band`;
+    return this.#band;
   }
   // Створюємо setter для #name, що дозволяє змінити приватну властивість #name
   set name(newName) {
@@ -389,9 +390,9 @@ class Vocalist {
   }
   // Визначаємо метод info(), який виводить інформацію про вокаліста
   // Виводимо інформацію у форматі: "Вокаліст ${this.name} є членом гурту ${this.band}"
-  info() {
+  info = () => {
     console.log(`Вокаліст ${this.name} є членом гурту ${this.band}`);
-  }
+  };
 }
 
 /*
@@ -403,7 +404,7 @@ class Vocalist {
  */
 class SongWriter {
   // Об'являємо приватні поля #songs;
-  #songs;
+  #songs = Array;
   // Створюємо конструктор з одним вхідним параметром: #songs
   constructor(songs) {
     this.#songs = songs;
@@ -481,7 +482,7 @@ let bassist = new Bassist("Paul McCartney", "бас-гітара", "The Beatles"
  */
 let band = new Band("The Beatles", [bassist]);
 // Додаємо guitarist до band за допомогою addMember
-band.addMember([guitarist]);
+band.addMember(guitarist);
 /*
  * Створення vocalist екземпляра класу Vocalist
  * -------------------------------------
@@ -537,21 +538,21 @@ let leadsinger = new LeadSinger("Mick Jagger", "The Rolling Stones", [
   "Let It Be",
 ]);
 // Методи для тестування розкоментувати після виконня всіх завдань
-console.log("musician:");
+console.log("musician.play:");
 musician.play();
-console.log("guitarist:");
+console.log("guitarist.play:");
 guitarist.play();
-console.log("bassist:");
+console.log("bassist.play:");
 bassist.play();
-console.log("band:");
+console.log("band.playMusic:");
 band.playMusic();
-console.log("performance:");
+console.log("performance.info:");
 performance.info();
-console.log("concert:");
+console.log("concert.info:");
 concert.info();
-console.log("vocalist:");
+console.log("vocalist.info:");
 vocalist.info();
-console.log("songwriter:");
+console.log("songwriter.info:");
 songwriter.info();
-console.log("leadsinger:");
+console.log("leadsinger.info:");
 leadsinger.info();
